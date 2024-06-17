@@ -1,0 +1,14 @@
+services:
+  mqtt:
+    image: iegomez/mosquitto-go-auth
+    restart: always
+    volumes:
+      - ./mqtt/mosquitto.conf:/etc/mosquitto/mosquitto.conf:Z
+      - ./mqtt/certs:/etc/mosquitto/certs:Z
+    ports:
+      - '1883:1883'
+      - '1890:1890'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '5000m'
